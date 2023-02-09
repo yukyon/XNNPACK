@@ -7113,15 +7113,10 @@ SET(PROD_SCALAR_WASM_MICROKERNEL_SRCS
     src/f32-conv-hwc/3x3s2p0p1c3x4-scalar-1x1.c
     src/f32-conv-hwc/3x3s2p1c3x4-scalar-1x1.c
     src/f32-conv-hwc2chw/3x3s2p1c3x4-scalar-1x1.c
-#    src/f32-dwconv/gen/f32-dwconv-3p1c-minmax-scalar-acc2.c
-#    src/f32-dwconv/gen/f32-dwconv-3p1c-scalar-acc2.c
-#    src/f32-dwconv/gen/f32-dwconv-4p1c-minmax-scalar-acc2.c
-#    src/f32-dwconv/gen/f32-dwconv-4p1c-scalar-acc2.c
-#    src/f32-dwconv/gen/f32-dwconv-9p1c-minmax-scalar-acc2.c
-#    src/f32-dwconv/gen/f32-dwconv-9p1c-scalar-acc2.c
-#    src/f32-dwconv/gen/f32-dwconv-25p1c-minmax-scalar-acc2.c
-#    src/f32-dwconv/gen/f32-dwconv-25p1c-scalar-acc2.c
-#    src/f32-dwconv/gen/f32-dwconv-5f5m5l1c1s1r-minmax-wasm.c
+    src/f32-dwconv/gen/up1x25-scalar-acc2.c
+    src/f32-dwconv/gen/up1x3-scalar-acc2.c
+    src/f32-dwconv/gen/up1x4-scalar-acc2.c
+    src/f32-dwconv/gen/up1x9-scalar-acc2.c
     src/f32-dwconv2d-chw/gen/3x3p1-minmax-scalar-2x1-acc2.c
     src/f32-dwconv2d-chw/gen/3x3s2p1-minmax-scalar-1x1-acc2.c
     src/f32-dwconv2d-chw/gen/5x5p2-minmax-scalar-1x1-acc5.c
@@ -7186,15 +7181,15 @@ SET(PROD_SCALAR_WASM_MICROKERNEL_SRCS
     src/f32-vunary/gen/vabs-scalar-x4.c
     src/f32-vunary/gen/vneg-scalar-x4.c
     src/f32-vunary/gen/vsqr-scalar-x4.c
-#    src/qc8-dwconv/gen/qc8-dwconv-3p2c-minmax-fp32-scalar-imagic.c
-#    src/qc8-dwconv/gen/qc8-dwconv-9p2c-minmax-fp32-scalar-imagic.c
-#    src/qc8-dwconv/gen/qc8-dwconv-25p1c-minmax-fp32-scalar-imagic.c
+    src/qc8-dwconv/gen/up1x25-minmax-fp32-scalar-imagic.c
+    src/qc8-dwconv/gen/up2x3-minmax-fp32-scalar-imagic.c
+    src/qc8-dwconv/gen/up2x9-minmax-fp32-scalar-imagic.c
     src/qc8-gemm/gen/1x2-minmax-fp32-scalar-imagic.c
     src/qc8-gemm/gen/2x2-minmax-fp32-scalar-imagic.c
     src/qc8-igemm/gen/1x2-minmax-fp32-scalar-imagic.c
     src/qc8-igemm/gen/2x2-minmax-fp32-scalar-imagic.c
-#    src/qs8-dwconv/gen/qs8-dwconv-9p2c-minmax-fp32-scalar-imagic.c
-#    src/qs8-dwconv/gen/qs8-dwconv-25p1c-minmax-fp32-scalar-imagic.c
+    src/qs8-dwconv/gen/up1x25-minmax-fp32-scalar-imagic.c
+    src/qs8-dwconv/gen/up2x9-minmax-fp32-scalar-imagic.c
     src/qs8-f32-vcvt/gen/vcvt-scalar-x1.c
     src/qs8-gavgpool/gen/7p7x-minmax-fp32-scalar-imagic-c4.c
     src/qs8-gavgpool/gen/7x-minmax-fp32-scalar-imagic-c4.c
@@ -7212,8 +7207,8 @@ SET(PROD_SCALAR_WASM_MICROKERNEL_SRCS
     src/qs8-vmulc/gen/minmax-fp32-scalar-x4.c
     src/qu8-avgpool/9p8x-minmax-scalar-c1.c
     src/qu8-avgpool/9x-minmax-scalar-c1.c
-#    src/qu8-dwconv/gen/qu8-dwconv-9p2c-minmax-fp32-scalar-imagic.c
-#    src/qu8-dwconv/gen/qu8-dwconv-25p1c-minmax-fp32-scalar-imagic.c
+    src/qu8-dwconv/gen/up1x25-minmax-fp32-scalar-imagic.c
+    src/qu8-dwconv/gen/up2x9-minmax-fp32-scalar-imagic.c
     src/qu8-f32-vcvt/gen/vcvt-scalar-x1.c
     src/qu8-gavgpool/gen/7p7x-minmax-fp32-scalar-imagic-c4.c
     src/qu8-gavgpool/gen/7x-minmax-fp32-scalar-imagic-c4.c
@@ -7260,10 +7255,10 @@ SET(PROD_SCALAR_WASM_MICROKERNEL_SRCS
 SET(PROD_WASM_MICROKERNEL_SRCS
     src/f32-avgpool/9p8x-minmax-wasm-c1.c
     src/f32-avgpool/9x-minmax-wasm-c1.c
-#    src/f32-dwconv/gen/f32-dwconv-3p1c-minmax-wasm-acc2.c
-#    src/f32-dwconv/gen/f32-dwconv-4p1c-minmax-wasm-acc2.c
-#    src/f32-dwconv/gen/f32-dwconv-9p1c-minmax-wasm-acc2.c
-#    src/f32-dwconv/gen/f32-dwconv-25p1c-minmax-wasm-acc2.c
+    src/f32-dwconv/gen/up1x25-minmax-wasm-acc2.c
+    src/f32-dwconv/gen/up1x3-minmax-wasm-acc2.c
+    src/f32-dwconv/gen/up1x4-minmax-wasm-acc2.c
+    src/f32-dwconv/gen/up1x9-minmax-wasm-acc2.c
     src/f32-gavgpool/7p7x-minmax-wasm-c1.c
     src/f32-gavgpool/7x-minmax-wasm-c1.c
     src/f32-gemm/gen/1x4-minmax-wasm.c
@@ -7303,21 +7298,21 @@ SET(PROD_WASM_MICROKERNEL_SRCS
     src/f32-vhswish/gen/vhswish-wasm-x4.c
     src/f32-vmulcaddc/gen/c1-minmax-wasm-2x.c
     src/f32-vrelu/gen/vrelu-wasm-x8.c
-#    src/qc8-dwconv/gen/qc8-dwconv-3p2c-minmax-fp32-wasm-fmagic.c
-#    src/qc8-dwconv/gen/qc8-dwconv-9p2c-minmax-fp32-wasm-fmagic.c
-#    src/qc8-dwconv/gen/qc8-dwconv-25p2c-minmax-fp32-wasm-fmagic.c
+    src/qc8-dwconv/gen/up2x25-minmax-fp32-wasm-fmagic.c
+    src/qc8-dwconv/gen/up2x3-minmax-fp32-wasm-fmagic.c
+    src/qc8-dwconv/gen/up2x9-minmax-fp32-wasm-fmagic.c
     src/qc8-gemm/gen/1x4-minmax-fp32-wasm-fmagic.c
     src/qc8-gemm/gen/4x4-minmax-fp32-wasm-fmagic.c
     src/qc8-igemm/gen/1x4-minmax-fp32-wasm-fmagic.c
     src/qc8-igemm/gen/4x4-minmax-fp32-wasm-fmagic.c
-#    src/qs8-dwconv/gen/qs8-dwconv-9p2c-minmax-fp32-wasm-fmagic.c
-#    src/qs8-dwconv/gen/qs8-dwconv-25p2c-minmax-fp32-wasm-fmagic.c
+    src/qs8-dwconv/gen/up2x25-minmax-fp32-wasm-fmagic.c
+    src/qs8-dwconv/gen/up2x9-minmax-fp32-wasm-fmagic.c
     src/qs8-gemm/gen/1x4-minmax-fp32-wasm-fmagic.c
     src/qs8-gemm/gen/4x4-minmax-fp32-wasm-fmagic.c
     src/qs8-igemm/gen/1x4-minmax-fp32-wasm-fmagic.c
     src/qs8-igemm/gen/4x4-minmax-fp32-wasm-fmagic.c
-#    src/qu8-dwconv/gen/qu8-dwconv-9p2c-minmax-fp32-wasm-fmagic.c
-#    src/qu8-dwconv/gen/qu8-dwconv-25p2c-minmax-fp32-wasm-fmagic.c
+    src/qu8-dwconv/gen/up2x25-minmax-fp32-wasm-fmagic.c
+    src/qu8-dwconv/gen/up2x9-minmax-fp32-wasm-fmagic.c
     src/qu8-gemm/gen/1x4-minmax-fp32-wasm-fmagic.c
     src/qu8-gemm/gen/4x4-minmax-fp32-wasm-fmagic.c
     src/qu8-igemm/gen/1x4-minmax-fp32-wasm-fmagic.c
