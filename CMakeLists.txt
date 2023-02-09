@@ -28,8 +28,8 @@ OPTION(XNNPACK_ENABLE_JIT "Build XNNPACK with JIT micro-kernels" OFF)
 OPTION(XNNPACK_ENABLE_MEMOPT "Build XNNPACK with optimized memory allocation scheme" ON)
 OPTION(XNNPACK_ENABLE_SPARSE "Build XNNPACK with graph rewriting for sparse inference" ON)
 OPTION(XNNPACK_ENABLE_GEMM_M_SPECIALIZATION "Build XNNPACK with support for selecting microkernel with different MR" ON)
-OPTION(XNNPACK_BUILD_TESTS "Build XNNPACK unit tests" ON)
-OPTION(XNNPACK_BUILD_BENCHMARKS "Build XNNPACK benchmarks" ON)
+OPTION(XNNPACK_BUILD_TESTS "Build XNNPACK unit tests" OFF)
+OPTION(XNNPACK_BUILD_BENCHMARKS "Build XNNPACK benchmarks" OFF)
 OPTION(XNNPACK_USE_SYSTEM_LIBS "Use system-provided dependency libraries" OFF)
 OPTION(XNNPACK_WITH_WASM_SIMD "Use wasm simd" OFF)
 
@@ -7335,22 +7335,20 @@ SET(PROD_WASMSIMD_MICROKERNEL_SRCS
     src/f32-avgpool/9x-minmax-wasmsimd-arm-c4.c
     src/f32-avgpool/9x-minmax-wasmsimd-x86-c4.c
     src/f32-conv-hwc2chw/3x3s2p1c3x4-wasmsimd-2x2.c
-#    src/f32-dwconv/gen/f32-dwconv-3p4c-minmax-wasmsimd-arm.c
-#    src/f32-dwconv/gen/f32-dwconv-3p4c-wasmsimd.c
-#    src/f32-dwconv/gen/f32-dwconv-3p8c-minmax-wasmsimd-x86.c
-#    src/f32-dwconv/gen/f32-dwconv-3p8c-wasmsimd.c
-#    src/f32-dwconv/gen/f32-dwconv-4p4c-minmax-wasmsimd-arm.c
-#    src/f32-dwconv/gen/f32-dwconv-4p4c-wasmsimd.c
-#    src/f32-dwconv/gen/f32-dwconv-4p8c-minmax-wasmsimd-x86.c
-#    src/f32-dwconv/gen/f32-dwconv-4p8c-wasmsimd.c
-#    src/f32-dwconv/gen/f32-dwconv-9p4c-minmax-wasmsimd-arm.c
-#    src/f32-dwconv/gen/f32-dwconv-9p4c-wasmsimd.c
-#    src/f32-dwconv/gen/f32-dwconv-9p8c-minmax-wasmsimd-x86.c
-#    src/f32-dwconv/gen/f32-dwconv-9p8c-wasmsimd.c
-#    src/f32-dwconv/gen/f32-dwconv-25p4c-minmax-wasmsimd-arm.c
-#    src/f32-dwconv/gen/f32-dwconv-25p4c-wasmsimd.c
-#    src/f32-dwconv/gen/f32-dwconv-5f5m5l4c4s4r-minmax-wasmsimd-arm.c
-#    src/f32-dwconv/gen/f32-dwconv-5f5m5l4c4s4r-wasmsimd.c
+    src/f32-dwconv/gen/up4x25-minmax-wasmsimd-arm.c
+    src/f32-dwconv/gen/up4x3-minmax-wasmsimd-arm.c
+    src/f32-dwconv/gen/up4x4-minmax-wasmsimd-arm.c
+    src/f32-dwconv/gen/up4x9-minmax-wasmsimd-arm.c
+    src/f32-dwconv/gen/up8x3-minmax-wasmsimd-x86.c
+    src/f32-dwconv/gen/up8x4-minmax-wasmsimd-x86.c
+    src/f32-dwconv/gen/up8x9-minmax-wasmsimd-x86.c
+    src/f32-dwconv/gen/up4x25-wasmsimd.c
+    src/f32-dwconv/gen/up4x3-wasmsimd.c
+    src/f32-dwconv/gen/up4x4-wasmsimd.c
+    src/f32-dwconv/gen/up4x9-wasmsimd.c
+    src/f32-dwconv/gen/up8x3-wasmsimd.c
+    src/f32-dwconv/gen/up8x4-wasmsimd.c
+    src/f32-dwconv/gen/up8x9-wasmsimd.c
     src/f32-dwconv2d-chw/gen/3x3p1-minmax-wasmsimd-arm-loadsplat-2x4.c
     src/f32-dwconv2d-chw/gen/3x3p1-minmax-wasmsimd-x86-loadsplat-2x4.c
     src/f32-dwconv2d-chw/gen/3x3s2p1-minmax-wasmsimd-arm-splat-1x4-acc4.c
@@ -7401,7 +7399,7 @@ SET(PROD_WASMSIMD_MICROKERNEL_SRCS
     src/f32-pavgpool/9x-minmax-wasmsimd-arm-c4.c
     src/f32-pavgpool/9x-minmax-wasmsimd-x86-c4.c
     src/f32-prelu/gen/wasmsimd-minmax-2x8.c
-#    src/f32-prelu/gen/wasmsimd-laneselect-2x8.c
+    src/f32-prelu/gen/wasmsimd-bitselect-2x8.c
     src/f32-qs8-vcvt/gen/vcvt-wasmsimd-magic-x32.c
     src/f32-qu8-vcvt/gen/vcvt-wasmsimd-magic-x32.c
     src/f32-raddstoreexpminusmax/gen/wasmsimd-rr2-p5-x16-acc2.c
@@ -7455,7 +7453,7 @@ SET(PROD_WASMSIMD_MICROKERNEL_SRCS
     src/f32-velu/gen/velu-wasmsimd-x86-rr2-p6-x20.c
     src/f32-vhswish/gen/vhswish-wasmsimd-x16.c
     src/f32-vlrelu/gen/vlrelu-wasmsimd-minmax-x8.c
-#    src/f32-vlrelu/gen/vlrelu-wasmsimd-laneselect-x8.c
+    src/f32-vlrelu/gen/vlrelu-wasmsimd-bitselect-x8.c
     src/f32-vmulcaddc/gen/c4-minmax-wasmsimd-arm-2x.c
     src/f32-vmulcaddc/gen/c4-minmax-wasmsimd-x86-2x.c
     src/f32-vrelu/gen/vrelu-wasmsimd-x16.c
@@ -7468,15 +7466,15 @@ SET(PROD_WASMSIMD_MICROKERNEL_SRCS
     src/f32-vunary/gen/vabs-wasmsimd-x8.c
     src/f32-vunary/gen/vneg-wasmsimd-x8.c
     src/f32-vunary/gen/vsqr-wasmsimd-x8.c
-#    src/qc8-dwconv/gen/qc8-dwconv-3p16c-minmax-fp32-wasmsimd-mul16-add16.c
-#    src/qc8-dwconv/gen/qc8-dwconv-9p16c-minmax-fp32-wasmsimd-mul16-add16.c
-#    src/qc8-dwconv/gen/qc8-dwconv-25p16c-minmax-fp32-wasmsimd-mul16-add16.c
+    src/qc8-dwconv/gen/up16x25-minmax-fp32-wasmsimd-mul16-add16.c
+    src/qc8-dwconv/gen/up16x3-minmax-fp32-wasmsimd-mul16-add16.c
+    src/qc8-dwconv/gen/up16x9-minmax-fp32-wasmsimd-mul16-add16.c
     src/qc8-gemm/gen/1x4c2s4-minmax-fp32-wasmsimd-dot16x2-ld128.c
     src/qc8-gemm/gen/4x4c2s4-minmax-fp32-wasmsimd-dot16x2-ld128.c
     src/qc8-igemm/gen/1x4c2s4-minmax-fp32-wasmsimd-dot16x2-ld128.c
     src/qc8-igemm/gen/4x4c2s4-minmax-fp32-wasmsimd-dot16x2-ld128.c
-#    src/qs8-dwconv/gen/qs8-dwconv-9p16c-minmax-fp32-wasmsimd-mul16-add16.c
-#    src/qs8-dwconv/gen/qs8-dwconv-25p16c-minmax-fp32-wasmsimd-mul16-add16.c
+    src/qs8-dwconv/gen/up16x25-minmax-fp32-wasmsimd-mul16-add16.c
+    src/qs8-dwconv/gen/up16x9-minmax-fp32-wasmsimd-mul16-add16.c
     src/qs8-f32-vcvt/gen/vcvt-wasmsimd-x32.c
     src/qs8-gavgpool/gen/7p7x-minmax-fp32-wasmsimd-c16.c
     src/qs8-gavgpool/gen/7x-minmax-fp32-wasmsimd-c16.c
@@ -7491,8 +7489,8 @@ SET(PROD_WASMSIMD_MICROKERNEL_SRCS
     src/qs8-vlrelu/gen/vlrelu-wasmsimd-x86-x16.c
     src/qs8-vmul/gen/minmax-fp32-wasmsimd-mul32-ld64-x8.c
     src/qs8-vmulc/gen/minmax-fp32-wasmsimd-mul32-ld64-x8.c
-#    src/qu8-dwconv/gen/qu8-dwconv-9p8c-minmax-fp32-wasmsimd-mul16.c
-#    src/qu8-dwconv/gen/qu8-dwconv-25p8c-minmax-fp32-wasmsimd-mul16.c
+    src/qu8-dwconv/gen/up8x25-minmax-fp32-wasmsimd-mul16.c
+    src/qu8-dwconv/gen/up8x9-minmax-fp32-wasmsimd-mul16.c
     src/qu8-f32-vcvt/gen/vcvt-wasmsimd-x32.c
     src/qu8-gavgpool/gen/7p7x-minmax-fp32-wasmsimd-c16.c
     src/qu8-gavgpool/gen/7x-minmax-fp32-wasmsimd-c16.c
@@ -7858,9 +7856,12 @@ ELSE()
   SET_PROPERTY(SOURCE ${COLD_SRCS} APPEND_STRING PROPERTY COMPILE_FLAGS "$<$<NOT:$<CONFIG:Debug>>: -Os >")
 ENDIF()
 IF(EMSCRIPTEN)
+  ADD_DEFINITIONS(-D__wasm__)
   IF(XNNPACK_WITH_WASM_SIMD)
-    SET_PROPERTY(SOURCE ${ALL_MICROKERNEL_SRCS} APPEND_STRING PROPERTY COMPILE_FLAGS " -msimd128 ")
-    SET_PROPERTY(TARGET XNNPACK APPEND_STRING PROPERTY COMPILE_FLAGS " -msimd128 ")
+    ADD_DEFINITIONS(-D__wasm_simd128__)
+    SET_PROPERTY(SOURCE ${PROD_MICROKERNEL_SRCS} APPEND_STRING PROPERTY COMPILE_FLAGS " -msimd128")
+    SET_PROPERTY(SOURCE ${ALL_MICROKERNEL_SRCS} APPEND_STRING PROPERTY COMPILE_FLAGS " -msimd128")
+    SET_PROPERTY(TARGET XNNPACK APPEND_STRING PROPERTY COMPILE_FLAGS " -msimd128")
   ENDIF()
 ENDIF()
 
